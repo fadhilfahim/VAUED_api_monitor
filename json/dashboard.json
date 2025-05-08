@@ -1,0 +1,82 @@
+{
+    "dashboard": {
+      "id": null,
+      "title": "Flask API Metrics",
+      "timezone": "browser",
+      "schemaVersion": 30,
+      "version": 1,
+      "refresh": "10s",
+      "panels": [
+        {
+          "type": "stat",
+          "title": "Avg Request Latency (Last 1m)",
+          "targets": [
+            {
+              "expr": "rate(request_latency_seconds_sum[1m]) / rate(request_latency_seconds_count[1m])",
+              "format": "time_series",
+              "interval": "",
+              "refId": "A"
+            }
+          ],
+          "datasource": "Prometheus",
+          "id": 1,
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s",
+              "decimals": 3
+            },
+            "overrides": []
+          }
+        },
+        {
+          "type": "graph",
+          "title": "Request Latency by Endpoint",
+          "targets": [
+            {
+              "expr": "rate(request_latency_seconds_sum[1m]) by (endpoint) / rate(request_latency_seconds_count[1m]) by (endpoint)",
+              "format": "time_series",
+              "refId": "A"
+            }
+          ],
+          "datasource": "Prometheus",
+          "id": 2,
+          "lines": true,
+          "legend": {
+            "show": true
+          }
+        },
+        {
+          "type": "stat",
+          "title": "Max Latency (5m window)",
+          "targets": [
+            {
+              "expr": "max(rate(request_latency_seconds_sum[5m]) / rate(request_latency_seconds_count[5m]))",
+              "format": "time_series",
+              "refId": "A"
+            }
+          ],
+          "datasource": "Prometheus",
+          "id": 3,
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s"
+            }
+          }
+        },
+        {
+          "type": "heatmap",
+          "title": "Latency Heatmap",
+          "targets": [
+            {
+              "expr": "rate(request_latency_seconds_sum[1m]) by (endpoint)",
+              "format": "heatmap",
+              "refId": "A"
+            }
+          ],
+          "datasource": "Prometheus",
+          "id": 4
+        }
+      ]
+    }
+  }
+  

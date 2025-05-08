@@ -1,0 +1,99 @@
+{
+    "info": {
+      "name": "Flask Book API",
+      "_postman_id": "b6b4c5e7-1a4f-432a-9e5a-60d9984c3f5d",
+      "description": "Collection to test Flask Book REST API",
+      "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+      {
+        "name": "Get All Books",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:5000/books",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["books"]
+          }
+        }
+      },
+      {
+        "name": "Get Book by ID",
+        "request": {
+          "method": "GET",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:5000/books/1",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["books", "1"]
+          }
+        }
+      },
+      {
+        "name": "Add New Book",
+        "request": {
+          "method": "POST",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"id\": 3,\n  \"title\": \"Fahrenheit 451\",\n  \"author\": \"Ray Bradbury\",\n  \"price\": 12.99\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/books",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["books"]
+          }
+        }
+      },
+      {
+        "name": "Update Book by ID",
+        "request": {
+          "method": "PUT",
+          "header": [
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "body": {
+            "mode": "raw",
+            "raw": "{\n  \"id\": 1,\n  \"title\": \"1984 - Updated\",\n  \"author\": \"George Orwell\",\n  \"price\": 17.50\n}"
+          },
+          "url": {
+            "raw": "http://localhost:5000/books/1",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["books", "1"]
+          }
+        }
+      },
+      {
+        "name": "Delete Book by ID",
+        "request": {
+          "method": "DELETE",
+          "header": [],
+          "url": {
+            "raw": "http://localhost:5000/books/1",
+            "protocol": "http",
+            "host": ["localhost"],
+            "port": "5000",
+            "path": ["books", "1"]
+          }
+        }
+      }
+    ]
+  }
+  
