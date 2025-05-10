@@ -1,6 +1,5 @@
 # VAUED_api_monitor
 ## monitoring API endpoints and other server metrics
-## creating alert t
 using tools like :
   Prometheus:
     custome metrics - endpoint related
